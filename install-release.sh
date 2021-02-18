@@ -276,14 +276,14 @@ get_version() {
 }
 
 download_v2ray() {
-  DOWNLOAD_LINK="https://github.com/v2fly/v2ray-core/releases/download/$RELEASE_VERSION/v2ray-linux-$MACHINE.zip"
+  DOWNLOAD_LINK="https://static.cowtransfer.com/43d7e437-76cb-4056-b9b4-2f447f1b7a4e%2Fa0e2d386-b5b5-4c31-b42c-3b9a06f60b4f%2Fv2ray-linux-arm32-v7a.zip?t-s=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJndWlkK3RpbWVzdGFtcCI6Imlsb3ZlY293dHJhbnNmZXIyMDIxXzE2MTM2MjM4Mjk2NzYifQ.nZaY8g6n_JKB7-pp3i9tQRFNg9IzyHVBlf9aLACVvz8&t-c=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJndWlkK3RpbWVzdGFtcCI6IjIwMjF8MnwxOHwxMiJ9.7tGYmvhzFpWZ6N_UcETU9g9PuA34NGVd8UlHlUmjo2U&attname=v2ray-linux-arm32-v7a.zip"
   echo "Downloading V2Ray archive: $DOWNLOAD_LINK"
   if ! curl -x "${PROXY}" -R -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"; then
     echo 'error: Download failed! Please check your network or try again.'
     return 1
   fi
   echo "Downloading verification file for V2Ray archive: $DOWNLOAD_LINK.dgst"
-  if ! curl -x "${PROXY}" -sSR -H 'Cache-Control: no-cache' -o "$ZIP_FILE.dgst" "$DOWNLOAD_LINK.dgst"; then
+  if ! curl -x "${PROXY}" -sSR -H 'Cache-Control: no-cache' -o "$ZIP_FILE.dgst" "https://static.cowtransfer.com/43d7e437-76cb-4056-b9b4-2f447f1b7a4e%2Fdc016bd5-1e7e-4ea8-95bc-75bf39c3a45b%2Fv2ray-linux-arm32-v7a.zip.dgst?t-s=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJndWlkK3RpbWVzdGFtcCI6Imlsb3ZlY293dHJhbnNmZXIyMDIxXzE2MTM2MjkxNjAyNzUifQ.I9GZRtC1DyGZjwwuwdi4sbD1EO30YC7U-Xy9i6OvTNs&t-c=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJndWlkK3RpbWVzdGFtcCI6IjIwMjF8MnwxOHwxNCJ9.O29EoC0YFXm0Sj2yEdelJSLZI9C_uH1SOFpLLp3SwRo&attname=v2ray-linux-arm32-v7a.zip.dgst"; then
     echo 'error: Download failed! Please check your network or try again.'
     return 1
   fi
